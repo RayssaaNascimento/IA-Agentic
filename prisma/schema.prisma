@@ -1,0 +1,55 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Area {
+  id      String   @id @default(cuid())
+  name    String   @unique
+  slug    String   @unique
+  courses Course[]
+}
+
+model Course {
+  id                String             @id @default(cuid())
+  name              String             @unique
+  slug              String             @unique
+  description       String
+  source            String
+  isMock            Boolean            @default(false)
+  published         Boolean            @default(false)
+  areaId            String
+  area              Area               @relation(fields: [areaId], references: [id])
+  curriculumEntries CurriculumEntry[]
+  createdAt         DateTime           @default(now())
+  updatedAt         DateTime           @updatedAt
+
+  @@index([areaId, published])
+}
+
+model Discipline {
+  id                String             @id @default(cuid())
+  name              String
+  description       String
+  source            String
+  isMock            Boolean            @default(false)
+  curriculumEntries CurriculumEntry[]
+}
+
+model CurriculumEntry {
+  id             String     @id @default(cuid())
+  courseId       String
+  disciplineId   String
+  semester       Int
+  workloadHours  Int?
+  position       Int        @default(0)
+  course         Course     @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  discipline     Discipline @relation(fields: [disciplineId], references: [id], onDelete: Cascade)
+
+  @@unique([courseId, disciplineId, semester])
+  @@index([courseId, semester, position])
+}

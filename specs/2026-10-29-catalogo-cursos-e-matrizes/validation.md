@@ -16,8 +16,14 @@
 Preencher antes de solicitar merge:
 
 - **Fontes de conteudo conferidas:**
-- **Mocks restantes e motivo:**
+- **Mocks restantes e motivo:** Nenhum. O catalogo esta vazio ate a confirmacao de fontes oficiais.
 - **Dispositivos e navegadores verificados:**
-- **Verificacoes de acessibilidade realizadas:**
-- **Testes e checagens executados:**
+- **Verificacoes de acessibilidade realizadas:** Revisao de implementacao: rotulos explicitos, controles nativos, foco visivel, link para pular ao conteudo, estados anunciados e preferencia por movimento reduzido. Teste manual pendente.
+- **Testes e checagens executados:** Diagnosticos do editor sem erros e `git diff --check` sem problemas. Build, typecheck e inicializacao do SQLite pendentes: Node.js/npm nao estao disponiveis no ambiente.
 - **Problemas conhecidos ou limitacoes:**
+
+## Estado desta implementacao
+
+- Interface, filtros, visualizacao de matriz e estados vazios implementados.
+- Cursos, areas, matrizes, descricoes e fontes oficiais aguardam confirmacao da coordenacao.
+- Validacao automatizada, testes manuais de acessibilidade e verificacao em navegadores/dispositivos permanecem pendentes.

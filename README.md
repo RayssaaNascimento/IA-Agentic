@@ -1,10 +1,34 @@
 # Sitech
-## Entrada da equipe
 
-- Mary, da equipe de engenharia, deseja um site confiável que utilize uma stack popular baseada em TypeScript.
-- Mary, da equipe de engenharia, relatou a necessidade de ter uma tela de login para cadastrar notícias. As notícias serão exibidas na página principal do site.
-- Mary da equipe de engenharia informou que podemos utilizar por enquanto sqlite.
-- Susan, da área de coordenação de curso, tem um link do site antigo no qual contém cursos técnicos e suas matrizes curriculares demonstrando quais são as matérias de cada curso e suas descrições, que serão os mesmos cursos e matrizes para esse novo site.
-- Susan relatou que o novo site irá conter apenas os cursos de ensino-técnico do link: https://etecsalesgomes.cps.sp.gov.br/ensino-tecnico/
-- Joaquim da área pedagógica, relatou que as matérias de cada curso podem ser encontradas pela internet ou inventadas temporariamente, servindo como mock.
-- Steve, do marketing, quer um site atraente que funcione bem em navegadores modernos e seja compatível com dispositivos mobiles.
+Catálogo responsivo de cursos técnicos da Etec Sales Gomes, construído com Next.js, React e TypeScript.
+
+## Executar localmente
+
+Requer Node.js 20.9 ou superior.
+
+```powershell
+npm install
+Copy-Item .env.example .env
+npm run db:push
+npm run dev
+```
+
+Para validar os tipos e gerar a versão de produção:
+
+```bash
+npm run typecheck
+npm run build
+```
+
+## Conteúdo do catálogo
+
+Os cursos estão intencionalmente ausentes do banco SQLite. A lista oficial, as
+matrizes e suas descrições devem ser adicionadas somente após confirmação pela
+coordenação e registro de suas fontes. A interface já oferece filtros por curso
+e área, estado sem resultados e detalhes expansíveis da matriz curricular.
+Somente cursos marcados como publicados são exibidos. Se conteúdo temporário for
+aprovado, marque curso ou disciplina com `isMock: true` e registre a fonte ou o
+motivo da ausência dos dados oficiais.
+
+Autenticação administrativa, notícias e edição de cursos não fazem parte deste
+escopo.
